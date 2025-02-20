@@ -3,7 +3,7 @@ let array = [];
 particlesJS("particles-js", {
     particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: [ "#00ff00", "#0000ff" ,"#ffffff"] },    // "#00ff00", "#0000ff" ,
+        color: { value: [ "#00ff00", "#0000ff" ,"#ffffff","#f00"] },    // "#00ff00", "#0000ff" ,
         shape: { type: "star" },
         opacity: { value: 0.5, random: true },
         size: { value: 7.5, random: true },
@@ -130,10 +130,11 @@ async function insertionSort() {
     let elements = document.querySelectorAll(".num");
     for (let i = 1; i < array.length; i++) {
         let key = array[i];
+        elements[i].classList.add("active");
         let j = i - 1;
 
         while (j >= 0 && array[j] > key) {
-            elements[j + 1].innerText = array[j];
+        elements[j + 1].innerText = array[j];
             array[j + 1] = array[j];
             j--;
             await sleep(300);
@@ -143,6 +144,137 @@ async function insertionSort() {
         elements[j + 1].classList.add("sorted");
     }
 }
+
+// Merge Sort 
+async function mergeSort(start, end) {
+    if (start >= end) {
+        return;
+    }
+    
+    const mid = Math.floor((start + end) / 2);
+
+    await mergeSort( start, mid);
+    await mergeSort( mid + 1, end);
+    await merge( start, mid, end);
+
+}
+
+async function merge( start, mid, end) {
+    const leftArray = [];
+    const rightArray = [];
+    const elements = document.querySelectorAll(".num");
+
+    for (let i = start; i <= mid; i++) {
+        leftArray.push(array[i]);
+
+    }
+    for (let i = mid + 1; i <= end; i++) {
+        rightArray.push(array[i]);
+ 
+    }
+       
+
+    await sleep(300);
+
+    let i = 0, j = 0, k = start;
+
+    while (i < leftArray.length && j < rightArray.length) {
+        if (leftArray[i] <= rightArray[j]) {
+            array[k] = leftArray[i];
+            elements[k].innerText = array[k];
+            elements[k].classList.remove("left");
+            elements[k].classList.add("active","swap");
+            await sleep(300);
+            elements[k].classList.remove("active","swap");
+            i++;
+        } else {
+            array[k] = rightArray[j];
+            elements[k].innerText = array[k];
+            elements[k].classList.remove("right");
+            elements[k].classList.add("active","swap");
+            await sleep(300);
+            elements[k].classList.remove("active","swap");
+
+            j++;
+        }
+        elements[k].classList.add("merge");
+        await sleep(300);
+        elements[k].classList.remove("merge");
+        elements[k].classList.add("merge");
+        k++;
+    }
+
+    while (i < leftArray.length) {
+        array[k] = leftArray[i];
+        elements[k].innerText = array[k];
+        elements[k].classList.remove("left");
+        elements[k].classList.add("merge");
+        elements[k].classList.add("active");
+        await sleep(300);
+        elements[k].classList.remove("merge");
+        elements[k].classList.remove("active");
+        i++;
+        k++;
+    }
+
+    while (j < rightArray.length) {
+        array[k] = rightArray[j];
+        elements[k].innerText = array[k];
+        elements[k].classList.remove("right");
+        elements[k].classList.add("merge");
+        await sleep(300);
+        elements[k].classList.remove("merge");
+        j++;
+        k++;
+    }
+    let sorti = 0;
+    
+}
+
+// Quick Sort
+async function quickSort( low, high) {
+    if (low < high) {
+        const pi = await partition(low, high);
+        await quickSort( low, pi - 1);
+        await quickSort( pi + 1, high);
+    }
+}
+
+async function partition(low, high) {
+    const pivot = array[high];
+    const elements = document.querySelectorAll(".num");
+    elements[high].classList.add("pivot");
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+        elements[j].classList.add("active");
+        await sleep(300);
+
+        if (array[j] <= pivot) {
+            i++;
+            [array[i], array[j]] = [array[j], array[i]];
+            elements[i].innerText = array[i];
+            elements[j].innerText = array[j];
+            elements[i].classList.add("swap");
+            elements[j].classList.add("swap");
+            await sleep(300);
+            elements[i].classList.remove("swap");
+            elements[j].classList.remove("swap");
+        }
+
+        elements[j].classList.remove("active");
+    }
+
+    [array[i + 1], array[high]] = [array[high], array[i + 1]];
+    elements[i + 1].innerText = array[i + 1];
+    elements[high].innerText = array[high];
+    elements[i + 1].classList.add("swap","sorted");
+    await sleep(300);
+    elements[i + 1].classList.remove("swap", "pivot");
+
+    return i + 1;
+}
+
 
 // Utility Function: Sleep
 function sleep(ms) {
