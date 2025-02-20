@@ -3,7 +3,7 @@ let array = [];
 particlesJS("particles-js", {
     particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: [ "#ffffff"] },    // "#00ff00", "#0000ff" ,
+        color: { value: [ "#00ff00", "#0000ff" ,"#ffffff"] },    // "#00ff00", "#0000ff" ,
         shape: { type: "star" },
         opacity: { value: 0.5, random: true },
         size: { value: 7.5, random: true },
@@ -64,6 +64,7 @@ async function startSorting() {
     else if (method === "insertion") await insertionSort();
     else if (method === "merge") await mergeSort(0, array.length - 1);
     else if (method === "quick") await quickSort(0, array.length - 1);
+    
 }
 
 // Bubble Sort
