@@ -11,8 +11,8 @@
     <div id="particles-js"></div>
     <!-- Header making  -->
 
-    <h1>Sorting Algorithm Visualizer</h1>
-    <h1>
+    <h1 class="header">Sorting Algorithm Visualizer</h1>
+    <h1 class="header">
         <span class="special">S</span><span class="normal">orting</span> 
         <span class="special">A</span><span class="normal">lgorithm</span> 
         <span class="special">V</span><span class="normal">isualizer</span>
@@ -21,22 +21,38 @@
     
 
 
-    <input type="text" id="user-input" placeholder="Enter numbers -> 1,2,3,4..">
-    <button onclick="setUserArray()">Use Input</button>
-    <button onclick="generateArray()">Random Array</button>
+    <div class="middle">
+        <div id="array-container"></div>
+        <div class="input">
+            <input type="text" id="user-input" placeholder="Enter numbers -> 1,2,3,4..">
+            <button onclick="setUserArray()">Use Input</button>
+            <button onclick="generateArray()">Generate Random Array</button>
+        </div>
+        
 
-    <select id="sorting-method">
-        <option value="bubble">Bubble Sort</option>
-        <option value="selection">Selection Sort</option>
-        <option value="insertion">Insertion Sort</option>
-        <option value="merge">Merge Sort</option>
-        <option value="quick">Quick Sort</option>
-    </select>
-    <button onclick="startSorting()">Sort</button>
+        <div class="sort">
+            <select id="sorting-method">
+                <option value="" disabled selected>Select Sorting Algorithm</option>
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="quick">Quick Sort</option>
+            </select>
+            <button onclick="startSorting()">Sort</button>
+            <button onclick="generateArray()">Restart</button>
+        </div>
+        
+        <!-- Speed Control -->
+        <div class="speed-control">
+            <label for="speed-slider">Sorting Speed:</label>
+            <input type="range" id="speed-slider" min="10" max="500" value="100" step="10">
+            <span id="speed-value">100ms</span>
+        </div>
+        
 
-    <button onclick="generateArray()">Restart</button>
-
-    <div id="array-container"></div>
+        
+    </div>
 
     <script src="script.js"></script>
 </body>

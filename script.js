@@ -1,5 +1,6 @@
 let array = [];
 
+// BackGrond fix Start
 particlesJS("particles-js", {
     particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -19,7 +20,44 @@ particlesJS("particles-js", {
     retina_detect: true
 });
 
+// BackGround fix End
 
+// Speed Control for Sorting Start 
+
+document.addEventListener("DOMContentLoaded", function () {
+    let slider = document.getElementById("speed-slider");
+    let speedValue = document.getElementById("speed-value");
+
+    slider.addEventListener("input", function () {
+        let speed = slider.value;
+        speedValue.textContent = speed + "ms";
+
+        if (speed > 300) {
+            slider.style.accentColor = "red"; // High speed - Red
+        } else if (speed > 100) {
+            slider.style.accentColor = "green"; // Normal speed - Green
+        } else {
+            slider.style.accentColor = "skyblue"; // Slow speed - Sky Blue
+        }
+    });
+});
+
+
+let sortingSpeed = 100; // Default speed
+
+function updateSpeed() {
+    let speedSlider = document.getElementById("speed-slider");
+    sortingSpeed = speedSlider.value;
+    document.getElementById("speed-value").innerText = `${sortingSpeed}ms`;
+}
+
+// Modify sorting functions to use 'sortingSpeed' for delays
+async function delay() {
+    return new Promise(resolve => setTimeout(resolve, sortingSpeed));
+}
+
+
+// Speed Control for Sorting end 
 
 
 function generateArray() {
@@ -74,7 +112,8 @@ async function bubbleSort() {
         for (let j = 0; j < array.length - i - 1; j++) {
             elements[j].classList.add("active");
             elements[j + 1].classList.add("active");
-            await sleep(300);
+            await delay();
+
 
             if (array[j] > array[j + 1]) {
                 elements[j].classList.remove("active");
@@ -86,7 +125,8 @@ async function bubbleSort() {
                 elements[j].innerText = array[j];
                 elements[j + 1].innerText = array[j + 1];
 
-                await sleep(300);
+                await delay();
+
             }
 
             elements[j].classList.remove("swap", "active");
@@ -105,7 +145,8 @@ async function selectionSort() {
 
         for (let j = i + 1; j < array.length; j++) {
             elements[j].classList.add("active");
-            await sleep(300);
+            await delay();
+
 
             if (array[j] < array[minIndex]) {
                 elements[minIndex].classList.remove("active");
@@ -137,7 +178,8 @@ async function insertionSort() {
         elements[j + 1].innerText = array[j];
             array[j + 1] = array[j];
             j--;
-            await sleep(300);
+            await delay();
+
         }
         array[j + 1] = key;
         elements[j + 1].innerText = key;
@@ -174,7 +216,8 @@ async function merge( start, mid, end) {
     }
        
 
-    await sleep(300);
+    await delay();
+
 
     let i = 0, j = 0, k = start;
 
@@ -184,7 +227,8 @@ async function merge( start, mid, end) {
             elements[k].innerText = array[k];
             elements[k].classList.remove("left");
             elements[k].classList.add("active","swap");
-            await sleep(300);
+            await delay();
+
             elements[k].classList.remove("active","swap");
             i++;
         } else {
@@ -192,13 +236,15 @@ async function merge( start, mid, end) {
             elements[k].innerText = array[k];
             elements[k].classList.remove("right");
             elements[k].classList.add("active","swap");
-            await sleep(300);
+            await delay();
+
             elements[k].classList.remove("active","swap");
 
             j++;
         }
         elements[k].classList.add("merge");
-        await sleep(300);
+        await delay();
+
         elements[k].classList.remove("merge");
         elements[k].classList.add("merge");
         k++;
@@ -210,7 +256,8 @@ async function merge( start, mid, end) {
         elements[k].classList.remove("left");
         elements[k].classList.add("merge");
         elements[k].classList.add("active");
-        await sleep(300);
+        await delay();
+
         elements[k].classList.remove("merge");
         elements[k].classList.remove("active");
         i++;
@@ -222,7 +269,8 @@ async function merge( start, mid, end) {
         elements[k].innerText = array[k];
         elements[k].classList.remove("right");
         elements[k].classList.add("merge");
-        await sleep(300);
+        await delay();
+
         elements[k].classList.remove("merge");
         j++;
         k++;
@@ -248,7 +296,8 @@ async function partition(low, high) {
 
     for (let j = low; j < high; j++) {
         elements[j].classList.add("active");
-        await sleep(300);
+        await delay();
+
 
         if (array[j] <= pivot) {
             i++;
@@ -257,7 +306,8 @@ async function partition(low, high) {
             elements[j].innerText = array[j];
             elements[i].classList.add("swap");
             elements[j].classList.add("swap");
-            await sleep(300);
+            await delay();
+
             elements[i].classList.remove("swap");
             elements[j].classList.remove("swap");
         }
@@ -269,7 +319,8 @@ async function partition(low, high) {
     elements[i + 1].innerText = array[i + 1];
     elements[high].innerText = array[high];
     elements[i + 1].classList.add("swap","sorted");
-    await sleep(300);
+    await delay();
+
     elements[i + 1].classList.remove("swap", "pivot");
 
     return i + 1;
