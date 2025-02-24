@@ -3,7 +3,7 @@ body {
     text-align: center;
     background-color: #f4f4f4;
 }
-                                    /* BackGround fix Start */
+/* BackGround fix Start */
 #particles-js {
     position: fixed;  /* Ensures it stays fixed in the background */
     top: 0;
@@ -24,7 +24,7 @@ body {
 @keyframes colorChange {
     0% { color: #ff5733; }  /* Reddish */
     50% { color: #33ff57; } /* Greenish */
-    100% { color: #3380ff; } /* Bluish */
+    100% { color: #f7f8fa; } /* Bluish */
 }
 
 @keyframes flip {
@@ -80,7 +80,7 @@ h1 {
 
 /* Waving Gradient Effect for Other Letters */
 .normal {
-    background: linear-gradient(90deg, #00d4ff, #ff00ff, #ff5733);
+    background: linear-gradient(90deg, #f5802b, #ff00ff, #ff5733);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -88,6 +88,53 @@ h1 {
 }
 
 /* for header modification End  */
+.boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+}
+/* Complexity Displaying Bolck Start */
+
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.complexity-box {
+    border: 2px solid #2ae6f3;
+    padding: 10px;
+    border-radius: 10px;
+    /* background-color: #f9f9f9; */
+    margin-bottom: 35px;
+    box-shadow: 0px 0px 15px rgba(21, 207, 240, 0.92); /* Soft glowing effect */
+}
+
+.Time-Complexity, .Space-Complexity {
+    padding: 5px 0;
+    font-size: 1.1em;
+}
+
+
+.left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: equal;
+    height: 40vh;
+    width: 40vw;
+    margin-top: 125px;
+    color: #d1f8ce;
+    padding: 20px;
+    border: 3px solid #12f0e1d1; /* White border for contrast */
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(21, 207, 240, 0.92); /* Soft glowing effect */
+}
+
+/* Complexity Displaying Bolck end */
+
 /* Main Processing block  Start */
 .middle {
     display: flex;
@@ -95,15 +142,28 @@ h1 {
     align-items: center;
     flex-direction: column;
     gap: 20px;
+    height: auto; /* Remove fixed Size and make it dynamic */
+    min-height: 40vh; /* Minimum height will be fixed */
+    width: 90vw;
     margin-top: 125px;
-    margin-right: 60vh;
-    margin-left: 60vh;
     padding: 20px;
-    border: 3px solid #12f0e1d1; /* White border for contrast */
+    border: 3px solid #12f0e1d1;
     border-radius: 20px;
-    /* background: linear-gradient(90deg, #1e3c72, #2a5298); Dark blue shades */
-    box-shadow: 0px 0px 15px rgba(7, 241, 238, 0.918); /* Soft glowing effect */
+    box-shadow: 0px 0px 15px rgba(21, 207, 240, 0.92);
+    overflow: hidden;
 }
+
+/* input box , select box , button box start */
+
+input, button, select {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+/* input box , select box , button box end */
+
 
 .input {
     display: flex;
@@ -117,19 +177,58 @@ h1 {
 button {
     border-radius: 10px;
     padding: 8px 15px;
-    background-color: #2a5298; /* Consistent with middle div */
-    color: #ffffff;
-    border: 2px solid #18dbf1;
+    background-color: #2c5364; /* Consistent with middle div */
+    color: #d1f8ce;
+    border: 2px solid #18f1ed;
     /* box-shadow: #09eb20bd; */
     transition: 0.3s ease-in-out;
 }
 
-button:hover {
+input:hover, button:hover, select:hover {
     background-color: #203a43;
-    box-shadow: 0px 4px 10px rgba(11, 235, 239, 0.852);
-}                                       
+    box-shadow: 0px 4px 10px rgba(31, 246, 60, 0.941);
+}  
+
+input, select {
+    background-color: #2c5364; /* Default background color */
+    color: #d1f8ce; /* Text color */
+    border: 2px solid #18f1ed;
+    transition: 0.3s ease-in-out;
+}
+
+/* Active state for input and select */
+input.active, select.active {
+    background-color: #203a43; /* Darker background when active */
+    box-shadow: 0 0 10px rgba(31, 246, 60, 0.8); /* Glow effect */
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: #d1f8ce; /* Same color as the input text */
+    opacity: 1; /* Make it fully opaque */
+}
 /* Main Processing block End */
 
+/* Algorithm Displaying Bolck Start */
+
+
+.right{
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    height: 40vh;
+    width: 50vw;
+    margin-top: 125px;
+    padding: 20px;
+    color: #d1f8ce;
+    border: 3px solid #12f0e1d1; /* White border for contrast */
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(21, 207, 240, 0.92); /* Soft glowing effect */
+}
+/* Algorithm Displaying Bolck end */
 
 /* Sorting Speed Start */
 
@@ -153,13 +252,59 @@ button:hover {
 }
 
 #speed-value {
-    color: white;
+    color: rgb(55, 222, 251);
     font-weight: bold;
 }
-
-
-
 /* Sorting Speed end  */
+
+
+
+/* breif Block Displayer Start */
+.brief {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.section {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #1abc9c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(22, 248, 248, 0.92);
+    /* background: #2c3e50; */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(26, 237, 241, 0.945);
+}
+
+.section h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    color: #80f3e6;
+    margin-bottom: 15px;
+}
+
+.section div {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: #80f3e6;
+    padding: 10px;
+}
+
+/* Text Modification start  */
+strong {
+    color: #37b39a;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+/* Text Modification start  */
+
+/* breif block displayer end */
 
 .controls {
     margin-bottom: 20px;
@@ -173,9 +318,14 @@ input, button, select {
 
 #array-container {
     display: flex;
+    flex-wrap: wrap;  /* Elements ko wrap karne ke liye */
     justify-content: center;
+    align-items: center;
     gap: 10px;
-    margin-top: 20px;
+    max-width: 100%;  /* Ensure it stays inside the middle container */
+    height: auto;  /* Height dynamically adjust hogi */
+    overflow: hidden;  /* Overflow hone se roke */
+    padding: 10px;
 }
 
 .num {
@@ -202,3 +352,127 @@ input, button, select {
 .sorted {
     background-color: green;
 }
+
+/* Footer Start */
+
+.footer {
+    background: #203a43;
+    color: #ecf1ed;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-header {
+    margin-bottom: 30px;
+}
+
+.footer-header h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 28px;
+    color: #80f3e6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-header p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: #bdc3c7;
+}
+
+.team-members {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    background: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 230, 230, 0.947);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    margin: 15px;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(12, 240, 20, 0.934);
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-member h3 {
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 10px;
+    color: #1abc9c;
+    font-size: 22px;
+}
+
+.social-links a {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #1abc9c;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #f39c12;
+}
+
+.label {
+    color: #1abc9c;
+    font-weight: bold;
+}
+
+.clickable {
+    font-family: 'Times New Roman', Times, serif;
+    color: #1abc9c;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.clickable:hover {
+    text-decoration: underline;
+}
+
+.text-highlight {
+    font-family: 'Times New Roman', Times, serif;
+    color: #80f3e6;
+    font-weight: normal;
+}
+
+/* Footer end */
+
+/* Thank start */
+
+/* Footer styling with wave animation */
+
+h4 {
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0 auto;
+    position: absolute;
+    transform: translateX(-50%);
+    width: auto;
+    box-shadow: 0px 4px 10px rgba(0, 230, 230, 0.3); 
+    background: rgba(15, 32, 39, 0.8);
+    /* color: #3bed13;  Light blue instead of pure white #a0c4ff */
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: #80f3e6; /* Default white */
+    width: 100%;
+}
+
+/* Thank end */
